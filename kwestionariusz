@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TRUE 1
+#define ILOSC 100
+void nowa_osoba(void);
+void drukuj_liste(void);
+void zwieksz_liste(void);
+void wykasuj(void);
+void info();
+typedef struct
+{
+    char imie[40];
+    char nazwisko[40];
+    char email[50];
+    char adres[70];
+    long telefon;
+
+} Lista_osob;
+Lista_osob *lista;
+int n = 0;
+int rozmiar;
+
+
+int main()
+{
+    info();
+    char znak;
+    printf("Ile osob chcesz wpisac? ");
+    scanf("%d", &rozmiar);
+    lista = (Lista_osob*)malloc(rozmiar * sizeof(Lista_osob));
+
+    while (TRUE)
+    {
+        printf("\n wybierz 'n' aby wprowadzic nowa osobe");
+        printf("\n wybierz 'l' aby wydrukowac liste");
+       // printf("\n wybierz 'k' aby wykasowac osobe z listy");
+        printf("\n wybierz 'q' aby zakonczyc program");
+        printf("\n wybor : ");
+        znak = getche();
+        switch (znak)
+        {
+        case 'n' :
+            if(n==rozmiar) zwieksz_liste();
+            nowa_osoba();
+            break;
+        case 'l' :
+            drukuj_liste();
+            break;
+        case 'q' :
+            exit(0);
+        case 'k' :
+            wykasuj();
+            break;
+        default :
+            puts("\n wprowadz tylko n,l lub q");
+        } // koniec instrukcji switch
+    } // koniec petli while
+
+    return 0;
+}
+void info()
+{
+    printf("Program tworzy liste osob. \n");
+}
+void nowa_osoba(void)
+{
+    char numstr [81];
+    printf("\nOsoba nr %d ", n+1);
+    printf("\npodaj imie : ");
+    gets(lista[n].imie);
+    printf("\npodaj nazwisko : ");
+    gets(lista[n].nazwisko);
+
+    printf("\npodaj email : ");
+    gets(lista[n].email);
+    printf("\npodaj adres : ");
+    gets(lista[n].adres);
+    printf("\npodaj telefon : ");
+    gets(numstr);
+    lista[n].telefon = atol(numstr);
+    n++;
+}
+void drukuj_liste(void)
+{
+    int j;
+    if (n < 1) printf("\n pusta lista");
+    for (j=0; j < n; j++)
+    {
+        printf("\n-------------------------------");
+        printf("\n Osoba Nr %d",j+1);
+        printf("\n Nazwisko i imie : %s %s \n",lista[j].nazwisko,lista[j].imie);
+        printf(" email : %s \n ",lista[j].email);
+        printf(" adres : %s\n",lista[j].adres);
+        printf(" telefon : %l\n",lista[j].telefon);
+
+    }
+}
+    void zwieksz_liste(){
+    lista=realloc(lista,2*rozmiar*sizeof(*lista));
+    }
+void wykasuj(){
+drukuj_liste();
+int nr;
+printf("Kogo chcesz usunac z listy? Wpisz numer ");
+scanf("%d",&nr);
+
+
+
+}
