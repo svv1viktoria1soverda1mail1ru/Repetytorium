@@ -13,27 +13,27 @@ int main()
 "t" - otwiera w trybie tekstowym
 "b" - w trybie binarnym
   Litery mozna ze soba laczyc, np. "rwb"
-
+*/
    //zapis pliku
    FILE *fp;
-   char tekst[]="MÃ³j pirwszy plik";
+   char tekst[]="Mój pirwszy plik";
    if((fp=fopen("napis.txt","w"))==NULL)
    {
-        printf("BÅ‚Ä…d otwarcia pliku!\n");
+        printf("B³¹d otwarcia pliku!\n");
         exit(1);
    }
     fprintf(fp,"%s",tekst);
     fclose(fp);
-/**/
-    //odczyt pliku
 
+    //odczyt pliku
+/*
     typedef FILE *plik;
     plik fp1;
     int c;
 
     if ((fp1=fopen("napis1.txt","r"))==NULL)
     {
-        perror("BÅ‚Ä…d otwarcia pliku!\n");
+        perror("Bl¹d otwarcia pliku!\n");
         exit(1);
     }
     while(1)
@@ -47,14 +47,15 @@ int main()
     fclose(fp1);
 
     //strumienie
-    /*
-    srdin - we
-    stdout - wy
-    stderr - errors
-    */
+
+   // srdin - we
+   // stdout - wy
+   // stderr - errors
+
     fprintf(stdout,"\nWitaj! Wpisz swoj wiek\n");
     int wiek;
     fscanf(stdin,"%d",&wiek);
     fprintf(stdout,"%d\n",wiek);
+    */
     return 0;
 }
